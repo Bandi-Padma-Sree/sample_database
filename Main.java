@@ -108,7 +108,16 @@ class ManageDB implements DBInterface{
 		      System.out.println("Performing the queries...");
 		      stmt = conn.createStatement();
 		      
-		      stmt.executeUpdate(query);
+		      if(query.contains("product") && query.contains("insert"))
+		      {
+		    	  PreparedStatement pstmt = conn.prepareStatement(query);
+		    	  System.out.println("Enter path file for image");
+		    	  FileInputStream image = new FileInputStream(sc.nextLine());
+		    	  pstmt.setBinaryStream(1, image);
+		    	  pstmt.execute();
+		      } 
+		      else
+		    	  stmt.executeUpdate(query);
 		      stmt.close();
 		      conn.close();
 		   }
