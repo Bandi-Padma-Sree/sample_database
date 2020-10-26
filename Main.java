@@ -106,7 +106,6 @@ class ManageDB implements DBInterface{
 		      
 		      //STEP 4: Execute a query
 		      System.out.println("Performing the queries...");
-		      stmt = conn.createStatement();
 		      
 		      if(query.contains("product") && query.contains("insert"))
 		      {
